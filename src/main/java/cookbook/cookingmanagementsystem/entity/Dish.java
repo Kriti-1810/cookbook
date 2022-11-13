@@ -16,7 +16,7 @@ public class Dish {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  int dishId;
 
-    @OneToOne(mappedBy = "dish")
+    @OneToOne(cascade = CascadeType.ALL)
     private DishDetails dishDetails;
 
     @OneToOne(cascade=CascadeType.ALL)

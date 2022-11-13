@@ -1,6 +1,7 @@
 package cookbook.cookingmanagementsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,10 +10,6 @@ public class DishDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int dishDetailsId;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dish_id", referencedColumnName = "dishId")
-    private Dish dish ;
 
     private Double prepTime;
 
@@ -25,9 +22,8 @@ public class DishDetails {
 
     }
 
-    public DishDetails(int dishDetailsId, Dish dish , Double prepTime, String recipe, String dishType) {
+    public DishDetails(int dishDetailsId, Double prepTime, String recipe, String dishType) {
         this.dishDetailsId = dishDetailsId;
-        this.dish= dish;
         this.prepTime = prepTime;
         this.recipe = recipe;
         this.dishType = dishType;
@@ -41,13 +37,7 @@ public class DishDetails {
         this.dishDetailsId = dishDetailsId;
     }
 
-    public Dish getDish() {
-        return dish;
-    }
 
-    public void setDish(Dish dish) {
-        this.dish = dish;
-    }
 
     public Double getPrepTime() {
         return prepTime;
@@ -77,7 +67,6 @@ public class DishDetails {
     public String toString() {
         return "DishDetails{" +
                 "dishDetailsId=" + dishDetailsId +
-                ", dish=" + dish +
                 ", prepTime=" + prepTime +
                 ", recipe='" + recipe + '\'' +
                 ", dishType='" + dishType + '\'' +

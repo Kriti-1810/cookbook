@@ -11,6 +11,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("api")
 public class DishController {
 
@@ -61,7 +62,7 @@ public class DishController {
 
     //add DishDetails to dish
     @PutMapping(path = "/addDishDetailToDish/{dishId}")
-    public Dish addDishFlavourToDish(@PathVariable Integer dishId, @RequestBody DishDetails dishDetails){
+    public Dish addDishDetailToDish(@PathVariable Integer dishId, @RequestBody DishDetails dishDetails){
         return dishService.addDishDetailToDish(dishId,dishDetails);
     }
 
